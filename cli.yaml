@@ -1,0 +1,31 @@
+name: ListenPrunez
+version: "1.0"
+author: Marko Leinikka
+about: Mass prune unwanted listens on ListenBrainz.
+args:
+  - filename:
+      short: f
+      long: filename
+      value_name: FILE
+      about: "Sets a custom listens file. Default: listens.json"
+      takes_value: true
+      default_value: listens.json
+  - url:
+      short: u
+      long: url
+      value_name: URL
+      about: "Sets a custom ListenBrainz server URL. Default: https://api.listenbrainz.org"
+      takes_value: true
+      default_value: https://api.listenbrainz.org
+  - artists:
+      short: a
+      long: artists
+      value_name: ARTISTS
+      about: Artist names to delete.
+      takes_value: true
+  - songs:
+      short: s
+      long: songs
+      value_name: SONGS
+      about: Song titles to delete.
+      takes_value: true
