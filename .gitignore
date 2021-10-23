@@ -1,0 +1,11 @@
+# IDEs
+/.idea
+
+# Username & API key
+.env
+
+# Builds
+/target
+
+# Other
+/listens.json

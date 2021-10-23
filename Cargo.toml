@@ -1,0 +1,17 @@
+[package]
+name = "listenprunez"
+version = "0.1.0"
+authors = ["Marko Leinikka"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv = "0.15.0"
+clap = { version = "3.0.0-beta.5", features = ["yaml"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.11", features = ["json", "blocking"] }
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+question = "0.2.2"
