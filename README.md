@@ -1,5 +1,7 @@
 # ListenBrainz Prune
 
+[![Rust Build](https://github.com/Luukuton/prunez/actions/workflows/rust.yml/badge.svg)](https://github.com/Luukuton/prunez/actions/workflows/rust.yml)
+
 At the time of writing ListenBrainz doesn't have the option to mass delete listens. This alleviates that. 
 
 ## Usage
