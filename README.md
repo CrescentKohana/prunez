@@ -22,3 +22,4 @@ At the time of writing ListenBrainz doesn't have the option to mass delete liste
 - Format with `cargo fmt`
 - Build with `cargo build`
 - Run with `cargo run -- [options]`
+- Build for release with `cargo build --release`
