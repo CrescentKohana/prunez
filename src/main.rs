@@ -35,6 +35,11 @@ fn main() {
         source_file = i;
     }
 
+    if !Path::new(source_file).exists() {
+        println!("{} not found.", source_file);
+        std::process::exit(0);
+    }
+
     let mut artists: Vec<String> = vec![];
     if let Some(i) = matches.value_of("artists") {
         let temp: Vec<String> = i.split(";;").map(str::to_string).collect();
@@ -47,18 +52,20 @@ fn main() {
         songs.extend(temp);
     }
 
-    if artists.is_empty() && songs.is_empty() {
-        println!("No artists or songs defined.");
+    let mut rec_ids: Vec<String> = vec![];
+    if let Some(i) = matches.value_of("recids") {
+        let temp: Vec<String> = i.split(";").map(str::to_string).collect();
+        rec_ids.extend(temp);
+    }
+
+    if artists.is_empty() && songs.is_empty() && rec_ids.is_empty() {
+        println!("No artists, songs or recording msids defined.");
         std::process::exit(0);
     }
 
     println!("Artists: {:?}", artists);
     println!("Songs: {:?}", songs);
-
-    if !Path::new(source_file).exists() {
-        println!("{} not found.", source_file);
-        std::process::exit(0);
-    }
+    println!("MSIDs: {:?}", rec_ids);
 
     let result = helpers::json::read_listens(source_file);
     let listens = result.unwrap();

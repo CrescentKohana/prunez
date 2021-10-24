@@ -7,7 +7,7 @@ args:
       short: f
       long: filename
       value_name: FILE
-      about: "Sets a custom listens file. Default: listens.json"
+      about: "Sets a custom listens json file. Default: listens.json"
       takes_value: true
       default_value: listens.json
   - url:
@@ -21,11 +21,17 @@ args:
       short: a
       long: artists
       value_name: ARTISTS
-      about: Artist names to delete.
+      about: List of artist names to prune.
       takes_value: true
   - songs:
       short: s
       long: songs
       value_name: SONGS
-      about: Song titles to delete.
+      about: List of song titles to prune.
       takes_value: true
+  - recids:
+        short: r
+        long: recids
+        value_name: RECIDS
+        about: List of recording msids to prune.
+        takes_value: true

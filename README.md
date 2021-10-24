@@ -15,6 +15,7 @@ At the time of writing ListenBrainz doesn't have the option to mass delete liste
 - `--url, -u` sets API URL. Default: **https://api.listenbrainz.org**
 - `--artists, -a` list of artists. All listens associated with them will be pruned. Separated by `;;`.
 - `--songs, -s` list of song titles. Separated by `;;`.
+- `--recids, -r` list of recording msids. Separated by `;`.
 
 ## Development
 
