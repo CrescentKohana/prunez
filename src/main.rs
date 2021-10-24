@@ -5,6 +5,7 @@ use clap::{load_yaml, App};
 use dotenv::dotenv;
 use std::borrow::Borrow;
 use std::io::{stdout, Write};
+use std::path::Path;
 use std::{env, thread, time};
 
 extern crate question;
@@ -53,6 +54,11 @@ fn main() {
 
     println!("Artists: {:?}", artists);
     println!("Songs: {:?}", songs);
+
+    if !Path::new(source_file).exists() {
+        println!("{} not found.", source_file);
+        std::process::exit(0);
+    }
 
     let result = helpers::json::read_listens(source_file);
     let listens = result.unwrap();
