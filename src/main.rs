@@ -73,7 +73,11 @@ fn main() {
 
     let mut to_prune: Vec<Listen> = vec![];
     for listen in listens {
-        if songs.contains(listen.track_metadata.track_name.as_ref().unwrap()) {
+        let mut listen_match = songs.contains(listen.track_metadata.track_name.as_ref().unwrap());
+        listen_match = listen_match || artists.contains(listen.track_metadata.artist_name.as_ref().unwrap());
+        listen_match = listen_match || rec_ids.contains(&listen.recording_msid);
+
+        if listen_match {
             to_prune.push(listen)
         }
     }
