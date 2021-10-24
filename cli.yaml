@@ -1,5 +1,5 @@
 name: ListenPrunez
-version: "1.0"
+version: "0.2.0"
 author: Marko Leinikka
 about: Mass prune unwanted listens on ListenBrainz.
 args:
