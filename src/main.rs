@@ -109,12 +109,30 @@ fn main() {
 
     let mut stdout = stdout();
     let mut prunes = 0;
+    let mut failed = 0;
     for listen in to_prune {
         print!("\r{} / {} pruned", prunes, total_prunes);
 
-        let result = helpers::api::delete_listen(api_url, api_key.borrow(), &listen);
-        if result.unwrap().status().is_success() {
-            prunes += 1;
+        let mut attempts = 0;
+        loop {
+            match helpers::api::delete_listen(api_url, api_key.borrow(), &listen) {
+                Ok(resp) => {
+                    if resp.status().is_success() {
+                        prunes += 1;
+                    } else {
+                        failed += 1;
+                    }
+                    break;
+                }
+                Err(_) => {
+                    attempts += 1;
+                    if attempts >= 10 {
+                        failed += 1;
+                        break;
+                    }
+                    thread::sleep(time::Duration::from_secs(10));
+                }
+            }
         }
 
         stdout.flush().unwrap();
@@ -126,4 +144,9 @@ fn main() {
     } else {
         print!("\rNo listens pruned.");
     }
+
+    if failed > 0 {
+        print!("\n{} listens could not be pruned. Run again to retry.", failed);
+    }
+    println!();
 }
